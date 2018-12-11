@@ -11,11 +11,6 @@ export class BooksService {
         });
     }
 
-    // getBook(bookID) {
-    //     let id = Number(bookID);
-    //     return this.books.find(book => book.id === id);
-    // }
-
     getBook(bookID): Promise<any> {
         let id = Number(bookID);
         return new Promise(resolve => {
@@ -30,18 +25,6 @@ export class BooksService {
     addBook(book): Promise<any> {
         return new Promise(resolve => {
             this.books.push(book);
-            resolve(this.books);
-        });
-    }
-
-    updateBook(bookID): Promise<any> {
-        let id = Number(bookID);
-        return new Promise(resolve => {
-            let index = this.books.findIndex(book => book.id === id);
-            if (index === -1) {
-                throw new HttpException('Book does not exist!', 404);
-            }
-            this.books.splice(1, index);
             resolve(this.books);
         });
     }

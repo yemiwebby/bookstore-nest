@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, Query, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Query, Delete } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDTO } from './dto/create-book.dto';
 
@@ -22,12 +22,6 @@ export class BooksController {
     async addBook(@Body() createBookDTO: CreateBookDTO) {
         const book = await this.booksService.addBook(createBookDTO);
         return book;
-    }
-
-    @Put()
-    async updateBook(@Query() query) {
-        const books = await this.booksService.updateBook(query.bookID);
-        return books;
     }
 
     @Delete()
